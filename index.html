@@ -22,7 +22,7 @@ font-weight:bold;
 }
 
 .container{
-margin-top:100px;
+margin-top:60px;
 }
 
 .listen{
@@ -33,11 +33,38 @@ padding:20px 40px;
 font-size:26px;
 border-radius:10px;
 text-decoration:none;
+margin-top:30px;
 }
 
-.nowplaying{
-margin-top:40px;
-font-size:22px;
+.listen:hover{
+background:#ff0000;
+}
+
+img{
+width:300px;
+border-radius:15px;
+margin-top:30px;
+}
+
+.live{
+margin-top:30px;
+font-size:24px;
+}
+
+.dot{
+height:16px;
+width:16px;
+background:red;
+border-radius:50%;
+display:inline-block;
+margin-right:10px;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1;}
+50%{opacity:0.3;}
+100%{opacity:1;}
 }
 
 </style>
@@ -52,41 +79,20 @@ font-size:22px;
 
 <div class="container">
 
-<h2>Direktesending</h2>
+<img src="buran.jpg">
+
+<div class="live">
+<span class="dot"></span>
+<strong>LIVE — DJ Balkan spiller</strong>
+</div>
+
+<br>
 
 <a class="listen" href="http://buranradio.ddns.net:8000/stream" target="_blank">
 ▶ Lytt Live
 </a>
 
-<div class="nowplaying">
-Nå spilles: <span id="song">Laster...</span>
 </div>
-
-</div>
-
-<script>
-
-async function getSong() {
-
-try {
-
-let response = await fetch("http://buranradio.ddns.net:8000/status-json.xsl");
-let data = await response.json();
-
-let song = data.icestats.source.title;
-
-document.getElementById("song").textContent = song;
-
-} catch {
-document.getElementById("song").textContent = "Ingen info";
-}
-
-}
-
-getSong();
-setInterval(getSong, 10000);
-
-</script>
 
 </body>
 </html>
