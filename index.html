@@ -33,17 +33,11 @@ padding:20px 40px;
 font-size:26px;
 border-radius:10px;
 text-decoration:none;
-transition:0.2s;
 }
 
-.listen:hover{
-background:#ff0000;
-transform:scale(1.05);
-}
-
-.footer{
-margin-top:120px;
-opacity:0.6;
+.nowplaying{
+margin-top:40px;
+font-size:22px;
 }
 
 </style>
@@ -64,16 +58,35 @@ opacity:0.6;
 ▶ Lytt Live
 </a>
 
-<p style="margin-top:40px;">
-Streamadresse:<br>
-http://buranradio.ddns.net:8000/stream
-</p>
+<div class="nowplaying">
+Nå spilles: <span id="song">Laster...</span>
+</div>
 
 </div>
 
-<div class="footer">
-<p>Nettradio drevet av Icecast</p>
-</div>
+<script>
+
+async function getSong() {
+
+try {
+
+let response = await fetch("http://buranradio.ddns.net:8000/status-json.xsl");
+let data = await response.json();
+
+let song = data.icestats.source.title;
+
+document.getElementById("song").textContent = song;
+
+} catch {
+document.getElementById("song").textContent = "Ingen info";
+}
+
+}
+
+getSong();
+setInterval(getSong, 10000);
+
+</script>
 
 </body>
 </html>
