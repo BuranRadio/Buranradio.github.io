@@ -2,7 +2,6 @@
 <html>
 <head>
 <title>Buran Radio</title>
-
 <style>
 body{
 background:#111;
@@ -11,12 +10,16 @@ font-family:Arial;
 text-align:center;
 margin-top:120px;
 }
-
-audio{
-width:320px;
+a{
+display:inline-block;
+padding:15px 30px;
+background:#e53935;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:20px;
 }
 </style>
-
 </head>
 
 <body>
@@ -24,15 +27,9 @@ width:320px;
 <h1>📻 Buran Radio</h1>
 <p>Direktesending</p>
 
-<audio controls>
-<source src="http://buranradio.ddns.net:8000/stream" type="audio/mpeg">
-</audio>
-
-<p>
-Hvis spilleren ikke starter:
-<br>
-<a href="http://buranradio.ddns.net:8000/stream">Klikk her for å åpne stream</a>
-</p>
+<a href="http://buranradio.ddns.net:8000/stream" target="_blank">
+▶ Lytt til radio
+</a>
 
 </body>
 </html>
