@@ -95,6 +95,53 @@ animation:blink 1s infinite;
 
   
 </div>
+<h2>🎵 Ønsk en sang</h2>
+
+<form id="songForm">
+  <input type="text" id="name" placeholder="Navn" required><br><br>
+  <input type="text" id="song" placeholder="Sang" required><br><br>
+  <input type="text" id="artist" placeholder="Artist" required><br><br>
+  <textarea id="message" placeholder="Hilsen (valgfritt)"></textarea><br><br>
+  <button type="submit">Send ønskesang</button>
+</form>
+
+<h3>🎧 Innkommende ønskesanger</h3>
+<ul id="songList"></ul>
+
+<script>
+const form = document.getElementById("songForm");
+const list = document.getElementById("songList");
+
+let songs = JSON.parse(localStorage.getItem("songs")) || [];
+
+function displaySongs(){
+  list.innerHTML = "";
+  songs.forEach((s) => {
+    const li = document.createElement("li");
+    li.textContent = s.name + " ønsker " + s.song + " - " + s.artist + " (" + s.message + ")";
+    list.appendChild(li);
+  });
+}
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const newSong = {
+    name: document.getElementById("name").value,
+    song: document.getElementById("song").value,
+    artist: document.getElementById("artist").value,
+    message: document.getElementById("message").value
+  };
+
+  songs.push(newSong);
+  localStorage.setItem("songs", JSON.stringify(songs));
+
+  form.reset();
+  displaySongs();
+});
+
+displaySongs();
+</script>
 
 </body>
 </html>
