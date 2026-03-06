@@ -95,38 +95,6 @@ animation:blink 1s infinite;
 
   
 </div>
-<h2> Ønsk en sang</h2>
-
-<form id="songForm">
-<input type="text" id="name" placeholder="Navn" required><br>
-<input type="text" id="song" placeholder="Sang" required><br>
-<input type="text" id="artist" placeholder="Artist" required><br>
-<textarea id="message" placeholder="Hilsen"></textarea><br>
-<button type="submit">Send ønskesang</button>
-</form>
-
-<script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbyU4cf3duuHg0prvs_VJ2uEmFCWP2VIYgDt5UgTprgUA3VTbgd6Lk8Y-lTqRNL8rhe9/exec";
-
-document.getElementById("songForm").addEventListener("submit", e => {
- e.preventDefault();
-
- const data = {
-   name: document.getElementById("name").value,
-   song: document.getElementById("song").value,
-   artist: document.getElementById("artist").value,
-   message: document.getElementById("message").value
- };
-
- fetch(scriptURL, {
-   method: "POST",
-   body: JSON.stringify(data)
- }).then(() => {
-   alert("Ønsket ditt er sendt til radioen!");
-   document.getElementById("songForm").reset();
- });
-});
-</script>
 
 </body>
 </html>
