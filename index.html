@@ -2,16 +2,28 @@
 <html>
 <head>
 <title>Buran Radio</title>
+
 <style>
 body{
 background:#111;
 color:white;
 font-family:Arial;
 text-align:center;
-margin-top:100px;
+margin-top:120px;
 }
-audio{
-width:300px;
+
+button{
+font-size:20px;
+padding:15px 30px;
+background:#ff3b3b;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff2020;
 }
 </style>
 </head>
@@ -21,9 +33,17 @@ width:300px;
 <h1>📻 Buran Radio</h1>
 <p>Direktesending</p>
 
-<audio controls autoplay>
-<source src="http://buranradio.ddns.net:8000/stream" type="audio/mpeg">
-</audio>
+<button onclick="playRadio()">▶ Spill radio</button>
+
+<audio id="radio" preload="none"></audio>
+
+<script>
+function playRadio(){
+  var audio = document.getElementById("radio");
+  audio.src = "http://buranradio.ddns.net:8000/stream";
+  audio.play();
+}
+</script>
 
 </body>
 </html>
