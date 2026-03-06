@@ -1,35 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Buran Radio</title>
+
 <style>
+
 body{
-background:#111;
+background:#0e0e0e;
 color:white;
 font-family:Arial;
 text-align:center;
-margin-top:120px;
+margin:0;
 }
-a{
+
+header{
+background:#c40000;
+padding:40px;
+font-size:40px;
+font-weight:bold;
+}
+
+.container{
+margin-top:100px;
+}
+
+.listen{
 display:inline-block;
-padding:15px 30px;
-background:#e53935;
+background:#ff2d2d;
 color:white;
+padding:20px 40px;
+font-size:26px;
+border-radius:10px;
 text-decoration:none;
-border-radius:8px;
-font-size:20px;
+transition:0.2s;
 }
+
+.listen:hover{
+background:#ff0000;
+transform:scale(1.05);
+}
+
+.footer{
+margin-top:120px;
+opacity:0.6;
+}
+
 </style>
+
 </head>
 
 <body>
 
-<h1>📻 Buran Radio</h1>
-<p>Direktesending</p>
+<header>
+💉 BURAN RADIO 🔊
+</header>
 
-<a href="http://buranradio.ddns.net:8000/stream" target="_blank">
-▶ Lytt til radio
+<div class="container">
+
+<h2>Direktesending</h2>
+
+<a class="listen" href="http://buranradio.ddns.net:8000/stream" target="_blank">
+▶ Lytt Live
 </a>
+
+<p style="margin-top:40px;">
+Streamadresse:<br>
+http://buranradio.ddns.net:8000/stream
+</p>
+
+</div>
+
+<div class="footer">
+<p>Nettradio drevet av Icecast</p>
+</div>
 
 </body>
 </html>
